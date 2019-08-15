@@ -11,27 +11,27 @@ const messageInput = document.getElementById('message-input');
 
 // Ask for Username & Show 'Joined' Message 
 let name = prompt('What is your name');
-if (name == null) {
+if (name == null || name == '') {
     do { 
         alert('Warning: Your name is null');
         name = prompt('What is your name');
-    } while (name == null)
+    } while (name == null || name == '')
 }
 appendMessage('You Joined the Chat, have fun 💯');
 
 // Send the new user name to the server
 socket.emit('new-user', name);
 
-// Receive Message -> data coming from the server
+// Receive New Message -> data coming from the server
 socket.on('chat-message', data => {
     // Append it to DOM
-    appendMessage(`${data.name}: ${data.message}`);
+    appendMessageUser(`${data.name}: ${data.message}`);
 });
 
 // Receive New User -> data coming from the server
 socket.on('user-connected', data => {
     // Append it to DOM
-    appendMessage(`${data} connected to the chat 💻`);
+    appendMessageUser(`${data} connected to the chat 💻`);
 });
 
 // Receive Disconnected User -> data coming from the server
@@ -57,6 +57,15 @@ messageForm.addEventListener('submit', () => {
 function appendMessage(message) {
     // Create a new div element
     const messageElement = document.createElement('div');
+    messageElement.innerText = message;
+    // Append the new div into the message container
+    messageContainer.append(messageElement);
+}
+
+function appendMessageUser(message) {
+    // Create a new div element
+    const messageElement = document.createElement('div');
+    messageElement.setAttribute("class", "otherUser");
     messageElement.innerText = message;
     // Append the new div into the message container
     messageContainer.append(messageElement);

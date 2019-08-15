@@ -14,7 +14,11 @@ body {
 	font-family: 'Arial', sans-serif;
 	-webkit-font-smoothing: antialiased;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
+    background-color: var(--dark-color);
+    height: 100vh;
 }
 
 #message-container {
@@ -29,29 +33,37 @@ body {
     flex-grow: 1;
     border: 1px #ccc solid;
     border-radius: 25px;
-    margin: 0.75rem;
+    margin: 1rem;
+    font-weight: bold;
+    box-shadow: 0 10px 20px 0 #a0a0a018;
 }
 
-#message-container div:nth-child(2n) {
-    background-color: var(--light-color);
+#message-container div.otherUser {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    font-weight: bold;
 }
 
 #send-container {
-    position: fixed;
+    /* position: fixed; */
     padding-bottom: 2rem;
     bottom: 0;
     /* background-color: white; */
     max-width: 1200px;
     width: 50%;
     display: flex;
+    height: 5.5rem;
+    align-self: flex-end;
 }
 
 #message-input {
     flex-grow: 1;
     padding: 1.2rem;
     font-size: 1rem;
+    font-weight: bold;
     outline: 0;
-    border: 2px solid #ccc;
+    border: 1px solid var(--primary-color);
     border-radius: 25px;
 }
 
