@@ -7,3 +7,8 @@ A simple chat application made with **Node.js** and [**Socket.io**](https://gith
 
 ## How To Use 
 1. 
+
+# What I Learned
+- Using Socket.io to create web sockets
+- How to send messages to clients in real time
+- Sending messages to the server in real time
