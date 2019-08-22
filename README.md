@@ -3,7 +3,7 @@ A simple chat application made with **Node.js** and [**Socket.io**](https://gith
 
 ## How To Install & Run
 1. Install the dependecies with ``npm install``
-2. ``Node start``
+2. ``npm start``
 
 ## How To Use 
 1. Open [live server](https://github.com/ritwickdey/vscode-live-server)

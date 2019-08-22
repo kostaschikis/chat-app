@@ -5,26 +5,26 @@ const io = require('socket.io')(3000);
 
 const users = {};
 
-// When a new user reaches the server -> send 'hello world' to client
-io.on('connection', socket => {
+// When a new user reaches the server
+io.on('userConnection', socket => {
 
-    // New User Handler | 'new-user' event
-    socket.on('new-user', name => {
+    // New User Handler | 'new_user' event
+    socket.on('new_user', name => {
         users[socket.id] = name;
-        // Send to everyone who connected | 'user-connected' event
-        socket.broadcast.emit('user-connected', name);
+        // Send to everyone who connected | 'user_connected' event
+        socket.broadcast.emit('user_connected', name);
     }); 
 
-    // Receive the message | 'send-chat-message' event
-    socket.on('send-chat-message', message => {
-        // Send the message to everyone connected | 'chat-message' event
-        socket.broadcast.emit('chat-message', { message: message, name: users[socket.id] });  
+    // Receive the message | 'send_chat_message' event
+    socket.on('send_message_to_chat', message => {
+        // Send the message to everyone connected | 'chat_message' event
+        socket.broadcast.emit('chat_message', { message: message, name: users[socket.id] });  
     });
 
-    // Disconnect Handler | 'disconnect' event
-    socket.on('disconnect', () => {
-        // Send who disconnect | 'user-disconnected' event
-        socket.broadcast.emit('user-disconnected', users[socket.id]);
+    // Disconnect Handler | 'userDisconnect' event
+    socket.on('userDisconnect', () => {
+        // Send who disconnect | 'user_disconnected' event
+        socket.broadcast.emit('user_disconnected', users[socket.id]);
         delete users[socket.id];
     });
 });
