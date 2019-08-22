@@ -11,6 +11,10 @@ A simple chat application made with **Node.js** and [**Socket.io**](https://gith
 3. Navigate to http://127.0.0.1:5500/index.html for both tabs
 4. Have fun
 
+## TO-DO ☑
+- [ ] Convert app to use express framework
+- [ ] Make chat rooms
+
 # What I Learned
 - Using Socket.io to create web sockets
 - How to send messages to clients in real time
